@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import spring_data_jpa_starter_app.usuario.model.User;
 import spring_data_jpa_starter_app.usuario.repository.UserRepository;
 
+import java.util.List;
+
 @Component
 public class StartApp implements CommandLineRunner {
     @Autowired
@@ -13,6 +15,12 @@ public class StartApp implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        List<User> users = repository.filtrarPorNome("Mateus");
+        for(User u : users)
+            System.out.println(u);
+    }
+
+    public void insertUser () {
         User user = new User();
         user.setName("Mateus Pettenuzzo ");
         user.setUsername("Mateus");
